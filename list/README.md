@@ -9,7 +9,7 @@
   - [Check for Uniqueness](#check-for-uniqueness)
   - [Checking memory usage of the list](#checking-memory-usage-of-the-list)
 
-## Introdution
+## Introduction
 The article is devoted to list operations that will make it easier for us to handle them.
 Generaly using list in Python Language is very popular and somethimes We implement complicated 
 algorithm for merging list, filter some elements in list or find something in list. 
@@ -19,13 +19,13 @@ but already use ready-made mechanisms to handle lists in Python.
 
 ## Merge lists
 
-## The Filter() Function
+## The Filter() function
 
 ## List Comprehensions
 
-## The Map() Function
+## The Map() function
 
-## The Zip() functions
+## The Zip() function
 
 ## Check for Uniqueness
 
