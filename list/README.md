@@ -181,4 +181,40 @@ It is common to use the map() function with the reduce() and the filter() functi
 
 ## Check for Uniqueness
 
+Python's lists can contain elements which are not unique. So you can have the following list:
+
+```
+>>> some_list = [1, 1, 2, 3, 4, 4]
+```
+
+Sometimes it is required to know if the list has unique elements or not. 
+You can do this in different ways.
+
+* set
+
+A Python's set data structure is an unordered structure with unique elements.
+So, comparing the length of the list and the set you can check if the list has unique values or not.
+
+```
+>>> some_list = [1, 1, 2, 3, 4, 4]
+>>> len(some_list) == len(set(some_list))
+False
+```
+
+* count
+
+The in-built count() method allows us to count the frequency of each element of the list. 
+If the count value is grater than 1 then there are duplicates.
+
+```
+>>> some_list = [1, 1, 2, 3, 4, 4]
+>>> for element in set(some_list):
+        print(f'element: {element}, count: {some_list.count(element)}')
+
+element: 1, count: 2
+element: 2, count: 1
+element: 3, count: 1
+element: 4, count: 2
+```
+
 ## Checking memory usage of the list
