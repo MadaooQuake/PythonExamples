@@ -97,6 +97,58 @@ The set function has been with us since python 2 but unfortunately it is rarely 
 
 ## The Filter() Function
 
+The filter() function, as the name suggests, is used to filter data in lists. 
+The feature has been with us since Python version 2, but many people continue not to use it.
+
+Below is an example without using the filter function:
+```
+list1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+filtered_list = []
+
+for item in list1:
+    if item % 2 == 0:
+        filtered_list.append(item)
+        
+print(filtered_list)
+```
+Output:
+```
+[2, 4, 6, 8, 10]
+```
+
+Now code with use the filter function:
+```
+list1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# returns True if number is even
+def check_even(number):
+    if number % 2 == 0:
+          return True  
+    return False
+        
+filtered_list = list(filter(check_even, list1))
+print(filtered_list)
+```
+Output is the same. 
+
+The filter function can be applied not only to numbers, but it can filter anything we want from the list. Below is the code to check if filtering by the letter b:
+```
+list1 = ['beaver', 'lemon', 'beard', 'cat', 'dog']
+
+def check_even(word):
+    if 'b' in word:
+          return True  
+    return False
+        
+filtered_list = list(filter(check_even, list1))
+print(filtered_list)
+```
+Output:
+```
+['beaver', 'beard']
+```
+
 ## List Comprehensions
 
 ## The Map() Function
