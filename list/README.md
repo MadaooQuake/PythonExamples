@@ -11,8 +11,10 @@
 
 ## Introduction
 The article is devoted to list operations that will make it easier for us to handle them.
-Generaly using list in Python Language is very popular and somethimes We implement complicated 
-algorithm for merging list, filter some elements in list or find something in list. 
+Lists are programming structures available in every programming language.
+Generally speaking, list is one of the most commonly used structures in Python Language and sometimes we implement complicated 
+algorithm for merging list, filter some elements in list or find something in list.
+So t is therefore profitable to know them - in case of basic programming and also during advanced algorithms.
 
 So this article is so that we don't have to invent advanced algorithms,
 but already use ready-made mechanisms to handle lists in Python. 
