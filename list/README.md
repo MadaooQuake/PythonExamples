@@ -155,6 +155,70 @@ Output:
 
 ## The Zip() functions
 
+The Zip() function in Python serves to create Tuple object. The Zip() function as paremteter use Lists, strings, numbers, tuple, etc. 
+The Zip() function returns an iterator of tuples, where the i-th tuple contains the i-th element from each of the argument sequences or iterables.
+The following example, using the zip(0) function, creates a tuple object from two lists:
+```
+list1 = {"one", "two", "three", "four"}
+list2 = [1,2,3,4]
+zip_object = zip(list1, list2)
+
+#zip object
+print(zip_object)
+
+# print tuple as a list
+print(list(zip_object))
+```
+output:
+```
+<zip object at 0x7fdb86086500>
+[('one', 1), ('three', 2), ('four', 3), ('two', 4)]
+```
+You can also convert a tuple object to a list, as seen in the example above. 
+Whether the zip function can accept more parameters than two, we will check: 
+```
+list1 = [1,2,3,4]
+list2 = ["I", "II", "III", "IV"]
+list3 = ["one", "two", "three", "four"]
+
+list_zip = zip(list1, list2, list3)
+print(list(list_zip))
+```
+As you can see it can be quietly done, and here is the result of our combination of three lists:
+```
+[(1, 'I', 'four'), (2, 'II', 'two'), (3, 'III', 'one'), (4, 'IV', 'three')]
+```
+We can also zipped list with diffrent lenght:
+```
+list1 = [1,2]
+list2 = ["one", "two", "three", "four"]
+
+list_zip = zip(list1, list2)
+print(list(list_zip))
+```
+Output:
+```
+[(1, 'four'), (2, 'one')]
+```
+In this case, the zip function as it does not see that something can no longer connect, it rejects. 
+
+We can also reverse the result of the zip function.
+```
+list_zip = [(1, 'I', 'four'), (2, 'II', 'two'), (3, 'III', 'one'), (4, 'IV', 'three')]
+
+list1, list2, list3 = list(zip(*list_zip))
+
+print(list1)
+print(list2)
+print(list3)
+```
+Output:
+```
+(1, 2, 3, 4)
+('I', 'II', 'III', 'IV')
+('four', 'two', 'one', 'three')
+```
+
 ## Check for Uniqueness
 
 ## Checking memory usage of the list
