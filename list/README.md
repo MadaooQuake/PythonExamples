@@ -423,3 +423,49 @@ element: 4, count: 2
 ```
 
 ## Checking memory usage of the list
+
+To check memory usage of the list you can use sys module.
+
+sys.getsizeof return the size of an object in bytes. According to the documentation 
+"Only the memory consumption directly attributed to the object is accounted for".
+Moreover the size of the memory contains garbage collector overhead.
+
+Using Python 3.11 on Windows I see the following result:
+
+```
+>>> import sys
+>>> some_list = []
+>>> sys.getsizeof(some_list)
+56
+```
+So, the empty list object is about 56 B. 
+
+```
+>>> some_list = [1]
+>>> sys.getsizeof(some_list)
+64
+
+>>> some_list = ['1']
+>>> sys.getsizeof(some_list)
+64
+```
+
+The one-element list object is about 64 B regardless of the type of element (int or str).
+The result is expected as in case of the list there are pointers to values 
+and each is 8 bytes (64 bit python).
+So 1 element = one 8-bytes pointer.
+56 + 8 = 64 as we expect.
+
+```
+>>> some_list = [1, 2, 3, 4, 5, 6, 7, 8]
+>>> sys.getsizeof(some_list)
+120
+
+>>> some_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+>>> sys.getsizeof(some_list)
+168
+
+>>> some_list = [x for x in range(1000)]
+>>> sys.getsizeof(some_list)
+8856
+```
