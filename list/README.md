@@ -22,8 +22,7 @@ but already use ready-made mechanisms to handle lists in Python.
 Python can merge lists with each other in a variety of ways. In this section we will go through the most popular ways to
 merge lists and which are offered by the latest version of Python.
 
-The first way, which is simple, but unfortunately not the best solution.
-
+The first way, which is simple, we will use a plus for combining lists:
 ```
 list1 = [1,2,3,4]
 list2 = [5,6,7,8]
