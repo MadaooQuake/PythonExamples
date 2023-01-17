@@ -423,3 +423,127 @@ element: 4, count: 2
 ```
 
 ## Checking memory usage of the list
+
+To check memory usage of the list you can use sys module.
+
+sys.getsizeof return the size of an object in bytes. According to the documentation 
+"Only the memory consumption directly attributed to the object is accounted for".
+Moreover the size of the memory contains garbage collector overhead.
+
+Using Python 3.11 on Windows I see the following result:
+
+```
+>>> import sys
+>>> some_list = []
+>>> sys.getsizeof(some_list)
+56
+```
+So, the empty list object is about 56 B. 
+
+```
+>>> some_list = [1]
+>>> sys.getsizeof(some_list)
+64
+
+>>> some_list = ['1']
+>>> sys.getsizeof(some_list)
+64
+```
+
+The one-element list object is about 64 B regardless of the type of element (int or str).
+The result is expected as in case of the list there are pointers to values 
+and each is 8 bytes (64 bit python).
+So 1 element = one 8-bytes pointer.
+56 + 8 = 64 as we expect.
+
+```
+>>> some_list = [1, 2, 3, 4, 5, 6, 7, 8]
+>>> sys.getsizeof(some_list)
+120
+
+>>> some_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+>>> sys.getsizeof(some_list)
+168
+
+>>> some_list = [x for x in range(1000)]
+>>> sys.getsizeof(some_list)
+8856
+```
+It is really good to know that in CPython the memory is preallocated in chunks to avoid 
+extending the list too frequently due to fact that resize operation is really costly 
+and it should be done rarely. 
+So as you can see:
+
+```
+>>> some_list = [1, 2, 3, 4, 5, 6, 7, 8]
+>>> sys.getsizeof(some_list)
+120
+>>> some_list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> sys.getsizeof(some_list)
+136
+>>> some_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>>> sys.getsizeof(some_list)
+136
+>>> some_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+>>> sys.getsizeof(some_list)
+152
+```
+sometimes we can observe that the size of memory doesn't change.
+
+Another example of preallocating the memory you can see below:
+
+```
+>>> some_list = []
+>>> sys.getsizeof(some_list)
+56
+>>> some_list = [1]
+>>> sys.getsizeof(some_list)
+64
+>>> some_list = [1, 2]
+>>> sys.getsizeof(some_list)
+72
+>>> some_list = [1, 2, 3]
+>>> sys.getsizeof(some_list)
+88
+```
+
+As you can see at beginning the list has allocated 56 bytes. After creating 1- and 2-elements lists
+there are allocated next 8 and 16 bytes as expected. 
+But when the list has 3 elements then Python allocates 88 bytes so twice as much as we expected. 
+It follows from preallocating mechanism of Python.
+
+In case of remove elements from the list using pop() method Python will shrink it in case of 
+removing more then half of the items.
+The example is shown below:
+
+```
+>>> some_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>>> sys.getsizeof(some_list)
+136
+>>> some_list.pop()
+10
+>>> sys.getsizeof(some_list)
+136
+>>> some_list.pop()
+9
+>>> sys.getsizeof(some_list)
+136
+>>> some_list.pop()
+8
+>>> sys.getsizeof(some_list)
+136
+>>> some_list.pop()
+7
+>>> sys.getsizeof(some_list)
+136
+>>> some_list.pop()
+6
+>>> sys.getsizeof(some_list)
+136
+>>> some_list.pop()
+5
+>>> sys.getsizeof(some_list)
+120
+```
+
+As you can see, only when 5-th element is popped then Python shrinks the allocated memory.
