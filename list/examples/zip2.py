@@ -1,4 +1,4 @@
-list1 = [1,2,3,4]
+list1 = [1, 2, 3, 4]
 list2 = ["I", "II", "III", "IV"]
 list3 = ["one", "two", "three", "four"]
 
