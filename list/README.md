@@ -19,7 +19,8 @@ but already use ready-made mechanisms to handle lists in Python.
 
 ## Merge lists
 
-Python can merge lists with each other in a variety of ways, in this section we will go through the most popular merged lists and which theses are offered by the latest version of Python.
+Python can merge lists with each other in a variety of ways. In this section we will go through the most popular ways to
+merge lists and which are offered by the latest version of Python.
 
 The first way, which is simple, but unfortunately not the best solution.
 
@@ -30,7 +31,7 @@ list2 = [5,6,7,8]
 merged_list = list1 + list2
 print(merged_list)
 ```
-Example 1 output :
+Example 1 output:
 ```
 [1, 2, 3, 4, 5, 6, 7, 8]
 ```
@@ -43,7 +44,7 @@ list2 = [4,5,6,7,8]
 merged_list = list1 + list2
 print(merged_list)
 ```
-Example 2 output :
+Example 2 output:
 ```
 [1, 2, 3, 4, 4, 5, 6, 7, 8]
 ```
@@ -155,11 +156,11 @@ Output:
 
 ## The Zip() functions
 
-The Zip() function in Python serves to create Tuple object. The Zip() function as paremteter use Lists, strings, numbers, tuple, etc. 
+The Zip() function in Python serves to create Tuple object. The Zip() function as parameter use Lists, strings, numbers, tuple, etc. 
 The Zip() function returns an iterator of tuples, where the i-th tuple contains the i-th element from each of the argument sequences or iterables.
-The following example, using the zip(0) function, creates a tuple object from two lists:
+The following example, using the zip() function, creates a tuple object from two lists:
 ```
-list1 = {"one", "two", "three", "four"}
+list1 = ["one", "two", "three", "four"]
 list2 = [1,2,3,4]
 zip_object = zip(list1, list2)
 
