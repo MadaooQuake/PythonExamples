@@ -1,5 +1,5 @@
 list1 = ["one", "two", "three", "four"]
-list2 = [1,2,3,4]
+list2 = [1, 2, 3, 4]
 zip_object = zip(list1, list2)
 
 #zip object
