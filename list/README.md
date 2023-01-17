@@ -201,6 +201,19 @@ So, comparing the length of the list and the set you can check if the list has u
 False
 ```
 
+* for
+
+You can find out if the list is unique by using simply for loop:
+
+```
+>>> elements = []
+>>> for element in some_list:
+        if element in elements:
+            print('list {some_list} is not unique')
+            break
+        elements.append(element)
+```
+
 * count
 
 The in-built count() method allows us to count the frequency of each element of the list. 
